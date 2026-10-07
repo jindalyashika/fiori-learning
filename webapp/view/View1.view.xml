@@ -1,0 +1,149 @@
+<mvc:View
+    controllerName="project2.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page id="dashboardPage" title="Dashboard" enableScrolling="true">
+
+        <content>
+
+            <Panel id="testPanel6" class="testPanel">
+
+                <VBox id="dashRoot" class="sapUiContentPadding">
+
+                    <!-- Hero Section -->
+                    <Panel id="panelDashboard">
+                        <VBox id="dashHero" class="dashHero">
+
+                            <Title
+                                id="dashboardTitle"
+                                text="Office Management Dashboard"
+                                level="H3"
+                                class="dashHeroTitle"/>
+
+                            <Text
+                                id="dashHeroText"
+                                text="Manage employees, departments and daily attendance in one place."
+                                class="dashHeroText"/>
+
+                        </VBox>
+                    </Panel>
+
+                    <!-- Overview -->
+                    <Title
+                        id="overviewTitle"
+                        text="Overview"
+                        level="H3"
+                        class="sapUiSmallMarginBottom"/>
+
+                    <HBox
+                        id="tileBox"
+                        class="dashboardTileBox"
+                        wrap="Wrap">
+
+                        <GenericTile
+                            id="employeeCountTile"
+                            header="Total Employees"
+                            subheader="Across all departments"
+                            class="dashboardTile dashCard sapUiSmallMarginEnd sapUiSmallMarginBottom"
+                            press="onNavToEmployeeList">
+
+                            <TileContent
+                                id="employeeTileContent"
+                                footer="View all employees">
+
+                                <NumericContent
+                                    id="employeeNumericContent"
+                                    value="{employeeModel>/Employees/length}"
+                                    valueColor="Good"
+                                    icon="sap-icon://employee"/>
+
+                            </TileContent>
+                        </GenericTile>
+
+
+                        <GenericTile
+                            id="deptTileNav"
+                            header="Total Departments"
+                            subheader="Active departments"
+                            class="dashboardTile dashCard sapUiSmallMarginEnd sapUiSmallMarginBottom"
+                            press="onNavToDepartmentList">
+
+                            <TileContent
+                                id="deptNavTileContent"
+                                footer="View all departments">
+
+                                <NumericContent
+                                    id="deptNumericContent"
+                                    value="{deptModel>/Departments/length}"
+                                    valueColor="Critical"
+                                    icon="sap-icon://org-chart"/>
+
+                            </TileContent>
+                        </GenericTile>
+
+
+                        <GenericTile
+                            id="attendanceTile"
+                            header="Mark Attendance"
+                            subheader="Daily attendance"
+                            class="dashboardTile dashCard sapUiSmallMarginEnd sapUiSmallMarginBottom"
+                            press="onNavToAttendance">
+
+                            <TileContent
+                                id="attendanceTileContent"
+                                footer="Open attendance">
+
+                                <ImageContent
+                                    id="attendanceImgContent"
+                                    src="sap-icon://appointment-2"/>
+
+                            </TileContent>
+                        </GenericTile>
+
+                    </HBox>
+
+
+                    <!-- Quick Actions -->
+                    <Title
+                        id="actionsTitle"
+                        text="Quick Actions"
+                        level="H3"
+                        class="sapUiSmallMarginTop sapUiSmallMarginBottom"/>
+
+                    <HBox
+                        id="actionsBox"
+                        wrap="Wrap">
+
+                        <Button
+                            id="goToEmployeeListBtn"
+                            text="Employee List"
+                            icon="sap-icon://employee"
+                            class="sapUiSmallMarginEnd sapUiTinyMarginBottom"
+                            press="onNavToEmployeeList"/>
+
+                        <Button
+                            id="goToAttendanceBtn"
+                            text="Mark Attendance"
+                            icon="sap-icon://appointment-2"
+                            class="sapUiSmallMarginEnd sapUiTinyMarginBottom"
+                            press="onNavToAttendance"/>
+
+                        <Button
+                            id="goToDeptBtn"
+                            text="Departments"
+                            icon="sap-icon://group"
+                            class="sapUiTinyMarginBottom"
+                            press="onNavToDepartmentList"/>
+
+                    </HBox>
+
+                </VBox>
+
+            </Panel>
+
+        </content>
+
+    </Page>
+
+</mvc:View>

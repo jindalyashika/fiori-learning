@@ -1,0 +1,36 @@
+<mvc:View controllerName="project2.controller.App"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.tnt"
+    xmlns:m="sap.m">
+
+    <ToolPage id="toolPage" sideExpanded="{ui>/sideExpanded}">
+
+        <header>
+            <ToolHeader id="toolHeader">
+                <m:Button id="menuToggleBtn" icon="sap-icon://menu2" type="Transparent" press="onToggleMenu"/>
+                <m:Title id="shellTitle" text="Employee Management" level="H3"/>
+                <m:ToolbarSpacer id="toolHeaderSpacer1"/>
+                <m:ToolbarSpacer id="toolHeaderSpacer2"/>
+                <m:Button id="summaryToggleBtn" text="Show Summary" icon="sap-icon://sys-monitor" press="onToggleSummary"/>
+            </ToolHeader>
+        </header>
+
+        <sideContent>
+            <SideNavigation id="sideNav" >
+                <item>
+                    <NavigationList id="navList" items="{nav>/items}" itemSelect="onNavItemSelect" >
+                        <items>
+                            <NavigationListItem id="navItemTemplate" text="{nav>text}" icon="{nav>icon}" key="{nav>key}"/>
+                        </items>
+                    </NavigationList>
+                </item>
+            </SideNavigation>
+        </sideContent>
+        
+        <mainContents>
+            <m:NavContainer id="navContainer"/>
+        </mainContents>
+
+    </ToolPage>
+</mvc:View>

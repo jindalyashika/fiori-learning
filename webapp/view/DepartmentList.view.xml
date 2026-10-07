@@ -1,0 +1,53 @@
+<mvc:View controllerName="project2.controller.DepartmentList"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:layout="sap.ui.layout">
+
+    <Page id="deptListPage" title="Departments" showNavButton="true" navButtonPress="onNavBack" enableScrolling="true">
+        <content>
+                <!-- <Panel id="testPanel3" class="testPanel"> -->
+
+            <layout:ResponsiveSplitter id="deptListPageSplitter" defaultPane="deptListMainPane">
+                <layout:PaneContainer id="deptListRootPane">
+
+                    <layout:SplitPane id="deptListMainPane">
+                        <layout:layoutData>
+                            <layout:SplitterLayoutData id="deptListMainLayout" size="75%"/>
+                        </layout:layoutData>
+                        <ScrollContainer id="deptListScroll" height="100%" vertical="true">
+                            <Table id="deptTable" items="{deptModel>/Departments}" noDataText="No departments found">
+                                <columns>
+                                    <Column id="deptColName"><Text id="deptColNameText" text="Department"/></Column>
+                                    <Column id="deptColManager"><Text id="deptColManagerText" text="Manager"/></Column>
+                                    <Column id="deptColCount" hAlign="End"><Text id="deptColCountText" text="Employees"/></Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem id="deptListItem" type="Navigation" press="onDeptPress">
+                                        <cells>
+                                            <Text id="deptNameCell" text="{deptModel>deptName}"/>
+                                            <Text id="deptManagerCell" text="{deptModel>manager}"/>
+                                            <Text id="deptCountCell" text="{deptModel>employeeCount}"/>
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </ScrollContainer>
+                    </layout:SplitPane>
+
+                    <layout:SplitPane id="deptListSummaryPane">
+                        <layout:layoutData>
+                            <layout:SplitterLayoutData id="deptListSideLayout" size="auto"/>
+                        </layout:layoutData>
+                        <VBox id="deptListSideBox" class="sapUiSmallMargin">
+                            <Title id="deptListSideTitle" text="Summary"/>
+                            <Text id="deptListSideCount" text="Total departments: {deptModel>/Departments/length}"/>
+                        </VBox>
+                    </layout:SplitPane>
+
+                </layout:PaneContainer>
+            </layout:ResponsiveSplitter>
+                        <!-- </Panel> -->
+
+        </content>
+    </Page>
+</mvc:View>

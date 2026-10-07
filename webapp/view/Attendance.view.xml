@@ -1,0 +1,85 @@
+<mvc:View controllerName="project2.controller.Attendance"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout">
+
+    <Page id="attendancePage" title="Mark Attendance" showNavButton="true" navButtonPress="onNavBack" enableScrolling="true">
+    
+        <subHeader>
+            <Toolbar id="attendanceToolbar">
+                <Label id="dateLabel" text="Select Date:" class="sapUiTinyMarginEnd"/>
+                <DatePicker id="attendanceDatePicker"
+                    value="{view>/selectedDate}"
+                    valueFormat="yyyy-MM-dd"
+                    displayFormat="dd/MM/yyyy"
+                    change="onDateChange"/>
+                <ToolbarSpacer id="attToolbarSpacer"/>
+                <Button id="saveAttendanceBtn" text="Save Attendance" type="Emphasized"
+                    icon="sap-icon://save" press="onSaveAttendance"/>
+            </Toolbar>
+        </subHeader>
+
+        <content>
+                <!-- <Panel id="testPanel" class="testPanel"> -->
+
+            <layout:ResponsiveSplitter id="attPageSplitter" defaultPane="tablePane">
+                <layout:PaneContainer id="attRootPane">
+
+                    <layout:SplitPane id="tablePane">
+                        <layout:layoutData>
+                            <layout:SplitterLayoutData id="tablePaneLayout" size="70%"/>
+                        </layout:layoutData>
+                        <ScrollContainer id="tableScroll" height="100%" vertical="true">
+                            <Table id="attendanceTable" items="{view>/attendanceList}" noDataText="No employees found">
+                                <columns>
+                                    <Column id="attColName"><Text id="attColNameText" text="Employee"/></Column>
+                                    <Column id="attColDept"><Text id="attColDeptText" text="Department"/></Column>
+                                    <Column id="attColStatus" hAlign="Center"><Text id="attColStatusText" text="Status"/></Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem id="attListItem"
+                                        highlight="{path: 'view>status', formatter: '.formatter.statusToHighlight'}">
+                                        <cells>
+                                            <Text id="attEmpName" text="{view>name}"/>
+                                            <Text id="attEmpDept" text="{view>department}"/>
+                                            <RadioButtonGroup id="attStatusRadioGroup" columns="2"
+                                                selectedIndex="{path: 'view>status', formatter: '.formatter.statusToIndex'}"
+                                                select="onStatusChange">
+                                                <RadioButton id="rbPresent" text="Present"/>
+                                                <RadioButton id="rbAbsent" text="Absent"/>
+                                            </RadioButtonGroup>
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </ScrollContainer>
+                    </layout:SplitPane>
+
+                    <layout:SplitPane id="attSummaryPane">
+                        <layout:layoutData>
+                            <layout:SplitterLayoutData id="summaryPaneLayout" size="auto"/>
+                        </layout:layoutData>
+                        <VBox id="summaryBox" class="sapUiSmallMargin">
+                            <Title id="summaryTitle" text="Summary" class="sapUiSmallMarginBottom"/>
+                            <Text id="summaryDate" text="Date: {view>/selectedDate}" class="sapUiSmallMarginBottom"/>
+
+                            <ObjectStatus id="summaryTotal" title="Total" text="{view>/attendanceList/length}" class="sapUiTinyMarginBottom"/>
+                            <ObjectStatus id="summaryPresent" title="Present" text="{view>/presentCount}" state="Success" class="sapUiTinyMarginBottom"/>
+                            <ObjectStatus id="summaryAbsent" title="Absent" text="{view>/absentCount}" state="Error" class="sapUiSmallMarginBottom"/>
+
+                            <ProgressIndicator id="summaryProgress"
+                                percentValue="{view>/presentPercent}"
+                                displayValue="{view>/presentPercent}% Present"
+                                state="Success"
+                                width="100%"/>
+                        </VBox>
+                    </layout:SplitPane>
+
+                </layout:PaneContainer>
+            </layout:ResponsiveSplitter>
+                        <!-- </Panel> -->
+
+        </content>
+    </Page>
+</mvc:View>

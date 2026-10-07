@@ -1,0 +1,73 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form">
+
+    <Dialog id="aeDialog"
+        title="{view>/dialogTitle}"
+        contentWidth="30rem">
+
+        <content>
+            <f:SimpleForm id="aeForm"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12">
+
+                <!-- Name field - required -->
+                <Label id="aeLblName" text="Name" required="true"/>
+                <Input id="aeInputName"
+                    value="{view>/employee/name}"
+                    valueState="{view>/nameState}"
+                    valueStateText="Name is required"/>
+
+                <!-- Department - Select dropdown -->
+                <Label id="aeLblDept" text="Department" required="true"/>
+                <Select id="aeInputDept" selectedKey="{view>/employee/department}">
+                    <core:Item id="aeDeptItemIT" key="IT" text="IT"/>
+                    <core:Item id="aeDeptItemHR" key="HR" text="HR"/>
+                    <core:Item id="aeDeptItemFinance" key="Finance" text="Finance"/>
+                    <core:Item id="aeDeptItemMarketing" key="Marketing" text="Marketing"/>
+                </Select>
+
+                <!-- Designation -->
+                <Label id="aeLblDesignation" text="Designation"/>
+                <Input id="aeInputDesignation" value="{view>/employee/designation}"/>
+
+                <!-- Email -->
+                <Label id="aeLblEmail" text="Email"/>
+                <Input id="aeInputEmail" type="Email" value="{view>/employee/email}"/>
+
+                <!-- Salary - StepInput -->
+                <Label id="aeLblSalary" text="Salary"/>
+                <StepInput id="aeInputSalary"
+                    value="{view>/employee/salary}"
+                    min="0" step="1000"/>
+
+                <!-- Joining Date -->
+                <Label id="aeLblJoining" text="Joining Date"/>
+                <DatePicker id="aeInputJoiningDate"
+                    value="{view>/employee/joiningDate}"
+                    valueFormat="yyyy-MM-dd"
+                    displayFormat="dd/MM/yyyy"/>
+
+                <!-- Status - RadioButtonGroup -->
+               <Label id="aeLblStatus" text="Status"/>
+                <RadioButtonGroup id="aeInputStatus"
+                    selectedIndex="{view>/statusIndex}"
+                    columns="3">
+                    <RadioButton id="aeStatusActive" text="Active"/>
+                    <RadioButton id="aeStatusLeave" text="On Leave"/>
+                    <RadioButton id="aeStatusInactive" text="Inactive"/>
+                </RadioButtonGroup>
+
+            </f:SimpleForm>
+        </content>
+
+        <beginButton>
+            <Button id="aeSaveBtn" text="{i18n>btnSave}" type="Emphasized" press=".onSaveEmployee"/>
+        </beginButton>
+        <endButton>
+            <Button id="aeCancelBtn" text="{i18n>btnCancel}" press=".onCancelEmployeeDialog"/>
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

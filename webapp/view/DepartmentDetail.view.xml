@@ -1,0 +1,67 @@
+<mvc:View controllerName="project2.controller.DepartmentDetail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:layout="sap.ui.layout">
+
+    <Page id="deptDetailPage" title="Department Detail" showNavButton="true" navButtonPress="onNavBack" enableScrolling="true">
+        <content>
+                <!-- <Panel id="testPanel1" class="testPanel"> -->
+
+            <layout:ResponsiveSplitter id="deptDetPageSplitter" defaultPane="deptDetMainPane">
+                <layout:PaneContainer id="deptDetRootPane">
+
+                    <layout:SplitPane id="deptDetMainPane">
+                        <layout:layoutData>
+                            <layout:SplitterLayoutData id="deptDetMainLayout" size="70%"/>
+                        </layout:layoutData>
+                        <ScrollContainer id="deptDetScroll" height="100%" vertical="true">
+                            <VBox id="deptDetBox">
+                                <ObjectHeader id="deptObjectHeader"
+                                    title="{deptModel>deptName}"
+                                    number="{deptModel>employeeCount}"
+                                    numberUnit="Employees">
+                                    <attributes>
+                                        <ObjectAttribute id="deptMgrAttr" title="Manager" text="{deptModel>manager}"/>
+                                    </attributes>
+                                </ObjectHeader>
+
+                                <Title id="deptEmpListTitle" text="Employees in this Department" class="sapUiSmallMarginTop sapUiSmallMarginBegin"/>
+                                <Table id="deptEmployeeTable" items="{deptView>/employees}">
+                                    <columns>
+                                        <Column id="deColName"><Text id="deColNameText" text="Name"/></Column>
+                                        <Column id="deColDesig"><Text id="deColDesigText" text="Designation"/></Column>
+                                        <Column id="deColStatus"><Text id="deColStatusText" text="Status"/></Column>
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem id="deEmpListItem">
+                                            <cells>
+                                                <Text id="deEmpName" text="{deptView>name}"/>
+                                                <Text id="deEmpDesig" text="{deptView>designation}"/>
+                                                <ObjectStatus id="deEmpStatus" text="{deptView>status}"
+                                                    state="{= ${deptView>status} === 'Active' ? 'Success' : (${deptView>status} === 'On Leave' ? 'Warning' : 'Error') }"/>
+                                            </cells>
+                                        </ColumnListItem>
+                                    </items>
+                                </Table>
+                            </VBox>
+                        </ScrollContainer>
+                    </layout:SplitPane>
+
+                    <layout:SplitPane id="deptDetSummaryPane">
+                        <layout:layoutData>
+                            <layout:SplitterLayoutData id="deptDetSideLayout" size="auto"/>
+                        </layout:layoutData>
+                        <VBox id="deptDetSideBox" class="sapUiSmallMargin">
+                            <Title id="deptDetSideTitle" text="Quick Info"/>
+                            <Text id="deptDetSideMgr" text="Manager: {deptModel>manager}"/>
+                            <Text id="deptDetSideCount" text="Employees: {deptModel>employeeCount}"/>
+                        </VBox>
+                    </layout:SplitPane>
+
+                </layout:PaneContainer>
+            </layout:ResponsiveSplitter>
+                        <!-- </Panel> -->
+
+        </content>
+    </Page>
+</mvc:View>

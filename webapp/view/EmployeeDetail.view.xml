@@ -1,0 +1,117 @@
+<mvc:View controllerName="project2.controller.EmployeeDetail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:layout="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    core:require="{ formatter: 'project2/model/formatter' }">
+
+    <Page id="employeeDetailPage" title="Employee Detail" showNavButton="true" navButtonPress="onNavBack" enableScrolling="true">
+        <content>
+                <!-- <Panel id="testPanel4" class="testPanel"> -->
+
+            <layout:ResponsiveSplitter id="empDetPageSplitter" defaultPane="empDetMainPane">
+                <layout:PaneContainer id="empDetRootPane">
+
+                    <layout:SplitPane id="empDetMainPane">
+                        <layout:layoutData>
+                            <layout:SplitterLayoutData id="empDetMainLayout" size="70%"/>
+                        </layout:layoutData>
+                        <ScrollContainer id="empDetScroll" height="100%" vertical="true">
+                            <VBox id="empDetBox">
+                                <ObjectHeader id="employeeObjectHeader"
+                                    title="{employeeModel>name}"
+                                    number="{employeeModel>salary}"
+                                    numberUnit="INR"
+                                    icon="sap-icon://employee">
+                                    <attributes>
+                                        <ObjectAttribute id="deptAttr" title="Department" text="{employeeModel>department}"/>
+                                        <ObjectAttribute id="designationAttr" title="Designation" text="{employeeModel>designation}"/>
+                                    </attributes>
+                                    <statuses>
+                                        <ObjectStatus
+    id="statusAttr"
+    text="{employeeModel>attendanceStatus}"
+    state="{= ${employeeModel>attendanceStatus} === 'Present' ? 'Success' : 'Error' }"/>
+
+                                    </statuses>
+                                </ObjectHeader>
+
+                                <IconTabBar id="employeeTabBar" expandable="false" class="sapUiResponsiveContentPadding">
+                                    <items>
+                                        <IconTabFilter id="tabDetails" text="Details" icon="sap-icon://detail-view">
+                                            <f:SimpleForm id="employeeForm" editable="false" layout="ResponsiveGridLayout"
+                                                labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12">
+                                                <Label id="lblEmpId" text="Employee ID"/>
+                                                <Text id="txtEmpId" text="{employeeModel>empId}"/>
+                                                <Label id="lblEmail" text="Email"/>
+                                                <Text id="txtEmail" text="{employeeModel>email}"/>
+                                                <Label id="lblJoining" text="Joining Date"/>
+                                                <Text id="txtJoining" text="{employeeModel>joiningDate}"/>
+                                                <Label id="lblTenure" text="Tenure"/>
+                                                <Text id="txtTenure" text="{parts: ['employeeModel>joiningDate'], formatter: 'formatter.calculateTenure'}"/>
+                                            </f:SimpleForm>
+
+                                            <Toolbar id="detailActionToolbar">
+                                                <ToolbarSpacer id="detailToolbarSpacer"/>
+                                                <Button id="editEmployeeBtn" text="{i18n>btnEdit}" icon="sap-icon://edit" press="onEditEmployee"/>
+                                                <Button id="deleteEmployeeBtn" text="{i18n>btnDelete}" icon="sap-icon://delete" type="Reject" press="onDeleteEmployee"/>
+                                            </Toolbar>
+                                        </IconTabFilter>
+
+<IconTabFilter id="tabAttendance" text="Attendance" icon="sap-icon://appointment-2">
+
+    <Toolbar id="attFilterToolbar">
+        <Label id="attRangeLabel" text="Filter by date range:" class="sapUiTinyMarginEnd"/>
+        <DynamicDateRange id="attDateRangeFilter"
+            standardOptions="DATERANGE"
+            change="onAttendanceDateRangeChange"/>
+        <ToolbarSpacer id="attFilterSpacer"/>
+        <Button id="attClearFilterBtn"
+            text="Clear"
+            icon="sap-icon://decline"
+            press="onClearAttendanceDateRange"/>
+    </Toolbar>
+
+    <Table id="employeeAttendanceTable" items="{empView>/records}"
+        noDataText="No attendance records yet for this employee">
+        <columns>
+            <Column id="edAttColDate"><Text id="edAttColDateText" text="Date"/></Column>
+            <Column id="edAttColStatus" hAlign="Center"><Text id="edAttColStatusText" text="Status"/></Column>
+        </columns>
+        <items>
+            <ColumnListItem id="edAttListItem">
+                <cells>
+                    <Text id="edAttDateCell" text="{empView>date}"/>
+                    <ObjectStatus id="edAttStatusCell" text="{empView>status}"
+                        state="{= ${empView>status} === 'Present' ? 'Success' : (${empView>status} === 'Leave' ? 'Warning' : 'Error') }"/>
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+</IconTabFilter>
+                                    </items>
+                                </IconTabBar>
+                            </VBox>
+                        </ScrollContainer>
+                    </layout:SplitPane>
+
+                    <layout:SplitPane id="empDetSummaryPane">
+                        <layout:layoutData>
+                            <layout:SplitterLayoutData id="empDetSideLayout" size="auto"/>
+                        </layout:layoutData>
+                        <VBox id="empDetSideBox" class="sapUiSmallMargin">
+                            <Title id="empDetSideTitle" text="Quick Info"/>
+                            <Text id="empDetSideEmail" text="Email: {employeeModel>email}"/>
+                            <Text id="empDetSideDept" text="Department: {employeeModel>department}"/>
+                        </VBox>
+                    </layout:SplitPane>
+
+                </layout:PaneContainer>
+            </layout:ResponsiveSplitter>
+            <!-- </Panel> -->
+        </content>
+                    
+
+    </Page>
+</mvc:View>

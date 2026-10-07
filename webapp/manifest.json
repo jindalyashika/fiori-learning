@@ -1,0 +1,183 @@
+{
+  "_version": "1.89.0",
+  "sap.app": {
+    "id": "project2",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.32.0",
+      "toolsId": "c4a64080-c3f7-4b75-b1a1-f1c438a2eabc"
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "Emp_Management-Display": {
+          "semanticObject": "Emp_Management",
+          "action": "Display",
+          "title": "{{Emp_Management-Display.flpTitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.152.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ui.layout": {},
+        "sap.tnt": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "project2.i18n.i18n"
+        }
+      },
+      "employeeModel": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/employees.json"
+      },
+      "deptModel": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/departments.json"
+      },
+      "attendanceModel": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/attendance.json"
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "type": "View",
+        "viewType": "XML",
+        "path": "project2.view",
+        "controlId": "navContainer",
+        "controlAggregation": "pages",
+        "transition": "slide",
+        "async": true
+      },
+      "routes": [
+        {
+          "name": "RouteView1",
+          "pattern": ":?query:",
+          "target": [
+            "TargetView1"
+          ]
+        },
+        {
+          "name": "RouteEmployeeList",
+          "pattern": "employeeList",
+          "target": [
+            "TargetEmployeeList"
+          ]
+        },
+        {
+          "name": "RouteEmployeeDetail",
+          "pattern": "employeeDetail/{empId}",
+          "target": [
+            "TargetEmployeeDetail"
+          ]
+        },
+        {
+          "name": "RouteAttendance",
+          "pattern": "attendance",
+          "target": [
+            "TargetAttendance"
+          ]
+        },
+        {
+          "name": "RouteDepartmentList",
+          "pattern": "departmentList",
+          "target": [
+            "TargetDepartmentList"
+          ]
+        },
+        {
+          "name": "RouteDepartmentDetail",
+          "pattern": "departmentDetail/{deptId}",
+          "target": [
+            "TargetDepartmentDetail"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetView1": {
+          "id": "View1",
+          "name": "View1"
+        },
+        "TargetEmployeeList": {
+          "id": "EmployeeList",
+          "name": "EmployeeList"
+        },
+        "TargetEmployeeDetail": {
+          "id": "EmployeeDetail",
+          "name": "EmployeeDetail"
+        },
+        "TargetAttendance": {
+          "id": "Attendance",
+          "name": "Attendance"
+        },
+        "TargetDepartmentList": {
+          "id": "DepartmentList",
+          "name": "DepartmentList"
+        },
+        "TargetDepartmentDetail": {
+          "id": "DepartmentDetail",
+          "name": "DepartmentDetail"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "project2.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "project2"
+  }
+}

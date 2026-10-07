@@ -1,0 +1,82 @@
+<mvc:View controllerName="project2.controller.EmployeeList"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    core:require="{ formatter: 'project2/model/formatter' }">
+
+    <Page id="employeeListPage" title="Employee List" showNavButton="true" navButtonPress="onNavBack" enableScrolling="true">
+        <subHeader>
+            <Toolbar id="employeeListToolbar">
+                <SearchField id="employeeSearchField" width="40%" placeholder="Search by name" liveChange="onSearchEmployee"/>
+                <ToolbarSpacer id="employeeToolbarSpacer"/>
+                <Select id="departmentFilterSelect" change="onFilterDepartment" width="10rem">
+                    <core:Item id="filterAll" key="" text="All Departments"/>
+                    <core:Item id="filterIT" key="IT" text="IT"/>
+                    <core:Item id="filterHR" key="HR" text="HR"/>
+                    <core:Item id="filterFinance" key="Finance" text="Finance"/>
+                    <core:Item id="filterMarketing" key="Marketing" text="Marketing"/>
+                </Select>
+            </Toolbar>
+        </subHeader>
+
+        <content>
+                <!-- <Panel id="testPanel5" class="testPanel"> -->
+
+            <layout:ResponsiveSplitter id="empListPageSplitter" defaultPane="empListMainPane">
+                <layout:PaneContainer id="empListRootPane">
+
+                    <layout:SplitPane id="empListMainPane">
+                        <layout:layoutData>
+                            <layout:SplitterLayoutData id="empListMainLayout" size="75%"/>
+                        </layout:layoutData>
+                        <ScrollContainer id="empListScroll" height="100%" vertical="true">
+                            <Table id="employeeTable" items="{employeeModel>/Employees}"
+                                growing="true" growingThreshold="5" noDataText="No employees found">
+
+                                <headerToolbar>
+                                    <Toolbar id="tableHeaderToolbar">
+                                        <Title id="employeeTableTitle" text="Employees"/>
+                                        <ToolbarSpacer id="tableToolbarSpacer"/>
+                                        <Button id="addEmployeeBtn" icon="sap-icon://add" text="{i18n>btnAddEmployee}"
+                                            type="Emphasized" press="onAddEmployee"/>
+                                    </Toolbar>
+                                </headerToolbar>
+
+                                <columns>
+                                    <Column id="colName"><Text id="colNameText" text="Name"/></Column>
+                                    <Column id="colDept"><Text id="colDeptText" text="Department"/></Column>
+                                    <Column id="colDesignation"><Text id="colDesignationText" text="Designation"/></Column>
+                                    <Column id="colSalary" hAlign="End"><Text id="colSalaryText" text="Salary"/></Column>
+                                </columns>
+
+                                <items>
+                                    <ColumnListItem id="employeeListItem" type="Navigation" press="onEmployeePress">
+                                        <cells>
+                                            <Text id="empNameCell" text="{employeeModel>name}"/>
+                                            <Text id="empDeptCell" text="{employeeModel>department}"/>
+                                            <Text id="empDesignationCell" text="{employeeModel>designation}"/>
+                                            <Text id="empSalaryCell" text="{parts: ['employeeModel>salary'], formatter: 'formatter.formatSalary'}"/>
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </ScrollContainer>
+                    </layout:SplitPane>
+
+                    <layout:SplitPane id="empListSummaryPane">
+                        <layout:layoutData>
+                            <layout:SplitterLayoutData id="empListSideLayout" size="auto"/>
+                        </layout:layoutData>
+                        <VBox id="empListSideBox" class="sapUiSmallMargin">
+                            <Title id="empListSideTitle" text="Summary"/>
+                            <Text id="empListSideCount" text="Total employees: {employeeModel>/Employees/length}"/>
+                        </VBox>
+                    </layout:SplitPane>
+
+                </layout:PaneContainer>
+            </layout:ResponsiveSplitter>
+            <!-- </Panel> -->
+        </content>
+    </Page>
+</mvc:View>

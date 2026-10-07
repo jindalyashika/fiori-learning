@@ -1,0 +1,24 @@
+{
+    "Departments": [
+        {
+            "deptId": "D01",
+            "deptName": "IT",
+            "manager": "Neha Gupta"
+        },
+        {
+            "deptId": "D02",
+            "deptName": "HR",
+            "manager": "Priya Verma"
+        },
+        {
+            "deptId": "D03",
+            "deptName": "Finance",
+            "manager": "Vikram Rao"
+        },
+        {
+            "deptId": "D04",
+            "deptName": "Marketing",
+            "manager": "Arjun Nair"
+        }
+    ]
+}

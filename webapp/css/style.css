@@ -1,0 +1,59 @@
+.dashboardTileBox {
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.dashboardTile {
+    width: 14rem;
+    height: 8rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.dashboardTile:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.dashboardTitle {
+    color: #32363a;
+}
+
+.sapMSplitContainerMasterBtn {
+    display: none !important;
+}
+
+/* Hero */
+.dashHero {
+    background: linear-gradient(135deg, #0a6ed1, #0854a0);
+    border-radius: 1rem;
+    padding: 1.5rem 2rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.dashHero .sapMTitle {
+    color: #ffffff !important;
+}
+
+.dashHero .dashHeroText {
+    color: #dbe9f7 !important;
+}
+
+/* Dashboard Cards */
+.dashCard {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dashCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+}
+
+/* Outer Panel */
+.testPanel {
+     /* border-radius: 8px; */
+    box-shadow: 0 4px 8px rgba(12, 12, 12, 0.507); 
+    height: 100%;
+}

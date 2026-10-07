@@ -1,0 +1,104 @@
+{
+    "Employees": [
+        {
+            "empId": "E001",
+            "name": "Aarav Sharma",
+            "department": "IT",
+            "designation": "Software Engineer",
+            "email": "aarav.sharma@company.com",
+            "salary": 55000,
+            "joiningDate": "2022-03-15",
+            "status": "Active"
+        },
+        {
+            "empId": "E002",
+            "name": "Priya Verma",
+            "department": "HR",
+            "designation": "HR Manager",
+            "email": "priya.verma@company.com",
+            "salary": 62000,
+            "joiningDate": "2019-07-01",
+            "status": "Active"
+        },
+        {
+            "empId": "E003",
+            "name": "Rohan Mehta",
+            "department": "Finance",
+            "designation": "Accountant",
+            "email": "rohan.mehta@company.com",
+            "salary": 48000,
+            "joiningDate": "2021-11-20",
+            "status": "Active"
+        },
+        {
+            "empId": "E004",
+            "name": "Simran Kaur",
+            "department": "IT",
+            "designation": "QA Engineer",
+            "email": "simran.kaur@company.com",
+            "salary": 50000,
+            "joiningDate": "2023-01-10",
+            "status": "On Leave"
+        },
+        {
+            "empId": "E005",
+            "name": "Karan Singh",
+            "department": "Marketing",
+            "designation": "Marketing Executive",
+            "email": "karan.singh@company.com",
+            "salary": 45000,
+            "joiningDate": "2020-05-05",
+            "status": "Active"
+        },
+        {
+            "empId": "E006",
+            "name": "Neha Gupta",
+            "department": "IT",
+            "designation": "Team Lead",
+            "email": "neha.gupta@company.com",
+            "salary": 78000,
+            "joiningDate": "2018-09-12",
+            "status": "Active"
+        },
+        {
+            "empId": "E007",
+            "name": "Vikram Rao",
+            "department": "Finance",
+            "designation": "Finance Manager",
+            "email": "vikram.rao@company.com",
+            "salary": 85000,
+            "joiningDate": "2017-02-28",
+            "status": "Active"
+        },
+        {
+            "empId": "E008",
+            "name": "Ananya Iyer",
+            "department": "HR",
+            "designation": "Recruiter",
+            "email": "ananya.iyer@company.com",
+            "salary": 42000,
+            "joiningDate": "2023-06-18",
+            "status": "Inactive"
+        },
+        {
+            "empId": "E009",
+            "name": "Arjun Nair",
+            "department": "Marketing",
+            "designation": "Marketing Manager",
+            "email": "arjun.nair@company.com",
+            "salary": 70000,
+            "joiningDate": "2019-12-01",
+            "status": "Active"
+        },
+        {
+            "empId": "E010",
+            "name": "Divya Patel",
+            "department": "IT",
+            "designation": "Software Engineer",
+            "email": "divya.patel@company.com",
+            "salary": 53000,
+            "joiningDate": "2022-08-23",
+            "status": "On Leave"
+        }
+    ]
+}

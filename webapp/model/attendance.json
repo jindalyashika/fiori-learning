@@ -1,0 +1,9 @@
+{
+  "Attendance": [
+    { "attId": "A001", "empId": "E001", "date": "2026-09-15", "status": "Present" },
+    { "attId": "A002", "empId": "E002", "date": "2026-09-15", "status": "Present" },
+    { "attId": "A003", "empId": "E004", "date": "2026-09-15", "status": "Leave" },
+    { "attId": "A004", "empId": "E001", "date": "2026-09-16", "status": "Present" },
+    { "attId": "A005", "empId": "E010", "date": "2026-09-16", "status": "Absent" }
+  ]
+}
