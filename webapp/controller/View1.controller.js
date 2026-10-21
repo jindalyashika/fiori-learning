@@ -14,6 +14,11 @@ sap.ui.define([
         },
         onNavToDepartmentList: function () {
         this.getOwnerComponent().getRouter().navTo("RouteDepartmentList");
+
+    },
+    onNavToTimeSheet: function () {
+        this.getOwnerComponent().getRouter().navTo("RouteTimeSheet");
     }
-    });
+
+})
 });

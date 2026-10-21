@@ -140,7 +140,13 @@
           "target": [
             "TargetDepartmentDetail"
           ]
-        }
+        },
+        {
+          "name": "RouteTimeSheet",
+          "pattern": "TimeSheet",
+          "target": [
+            "TargetTimeSheet"
+          ]}
       ],
       "targets": {
         "TargetView1": {
@@ -166,6 +172,10 @@
         "TargetDepartmentDetail": {
           "id": "DepartmentDetail",
           "name": "DepartmentDetail"
+        },
+        "TargetTimeSheet":{
+          "id": "TimeSheet",
+          "name": "TimeSheet"
         }
       }
     },

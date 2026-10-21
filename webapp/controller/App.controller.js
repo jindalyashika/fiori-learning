@@ -18,7 +18,9 @@ sap.ui.define([
                     { key: "RouteView1", text: "Dashboard", icon: "sap-icon://home" },
                     { key: "RouteEmployeeList", text: "Employees", icon: "sap-icon://employee" },
                     { key: "RouteAttendance", text: "Mark Attendance", icon: "sap-icon://appointment-2" },
-                    { key: "RouteDepartmentList", text: "Departments", icon: "sap-icon://group" }
+                    { key: "RouteDepartmentList", text: "Departments", icon: "sap-icon://group" },
+                    { key: "RouteTimeSheet", text: "TimeSheet", icon: "sap-icon://timesheet" }
+
                 ]
             });
             this.getView().setModel(oNavModel, "nav");

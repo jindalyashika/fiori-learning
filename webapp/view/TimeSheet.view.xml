@@ -1,0 +1,78 @@
+<mvc:View
+    controllerName="project2.controller.TimeSheet"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:table="sap.ui.table"
+    xmlns:rowmodes="sap.ui.table.rowmodes"
+    displayBlock="true">
+    <Page title="Time Sheet" showNavButton="true" navButtonPress="onNavBack" enableScrolling="true">
+        <content>
+            <OverflowToolbar>
+                <DateRangeSelection
+                    id="drs"
+                    width="18rem"
+                    displayFormat="dd/MM/yyyy"
+                    placeholder="Select date range"
+                    change=".onDateChange"  
+                    afterValueHelpOpen=".onCalendarOpen"
+                    afterValueHelpClose=".onCalendarClose"/>
+                <Button text="Generate" type="Emphasized" press=".onGenerate" />
+                
+            </OverflowToolbar>
+
+            <table:Table id="dynTable" rows="{/rows}" selectionMode="None" fixedColumnCount="1">
+                <table:rowMode>
+                    <rowmodes:Auto  />
+                </table:rowMode>
+                <table:columns>
+                    <!-- column 1 is fixed -->
+                    <table:Column width="8rem">
+                        <table:multiLabels>
+                            <Label text="Item" />
+                            <Label text="" />
+                        </table:multiLabels>
+                        <table:template>
+                            <Text text="{name}" />
+                        </table:template>
+                    </table:Column>
+                </table:columns>
+            </table:Table>
+        </content>
+
+        <!-- Column template-->
+        <dependents>
+            <table:Column id="colTemplate" width="8rem" hAlign="Center">
+                <table:multiLabels>
+                    <Label text="" design="Bold" />   <!-- DATE -->
+                    <Label text="" />                  <!-- DAY -->
+                </table:multiLabels>
+                <table:template>
+                    <Input id ="inputField" placeholder=" " />
+                </table:template>
+            </table:Column>
+        </dependents>
+        <footer>
+        <Bar>
+        <contentRight>
+        <Button
+                id="EditBtn"
+                text="Edit"
+                icon="sap-icon://edit"
+                class="sapUiTinyMarginBottom"
+                type="Emphasized"
+                visible="false"
+                press="onEditList"/>
+         <Button
+                id="SaveBtn"
+                text="Save"
+                icon="sap-icon://save"
+                class="sapUiTinyMarginBottom"
+                type="Emphasized"
+                press="onSaveList"/>
+                </contentRight>
+                </Bar>
+            </footer>
+
+        
+    </Page>
+</mvc:View>

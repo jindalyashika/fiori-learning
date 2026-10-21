@@ -92,7 +92,7 @@
 
                             <TileContent
                                 id="attendanceTileContent"
-                                footer="Open attendance">
+                                footer="Check Task Alloted">
 
                                 <ImageContent
                                     id="attendanceImgContent"
@@ -100,6 +100,27 @@
 
                             </TileContent>
                         </GenericTile>
+
+
+                        
+                        <GenericTile
+                            id="TimeTable"
+                            header="Genrenic Time Sheet"
+                            subheader="TimeTableAllotment"
+                            class="dashboardTile dashCard sapUiSmallMarginEnd sapUiSmallMarginBottom"
+                            press="onNavToTimeSheet">
+
+                            <TileContent
+                                id="TimeTableTileContent"
+                                footer="Open TimeSheet">
+
+                                <ImageContent
+                                    id="TimeTableImgContent"
+                                    src="sap-icon://timesheet"/>
+
+                            </TileContent>
+                        </GenericTile>
+
 
                     </HBox>
 
@@ -135,6 +156,13 @@
                             icon="sap-icon://group"
                             class="sapUiTinyMarginBottom"
                             press="onNavToDepartmentList"/>
+
+                        <Button
+                            id="goToTimeSheettBtn"
+                            text="TimeSheet"
+                            icon="sap-icon://timesheet"
+                            class="sapUiTinyMarginBottom"
+                            press="onNavToTimeSheet"/>
 
                     </HBox>
 
