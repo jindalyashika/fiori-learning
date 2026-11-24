@@ -43,8 +43,8 @@
 
                         <GenericTile
                             id="employeeCountTile"
-                            header="Total Employees"
-                            subheader="Across all departments"
+                            header="{i18n>tileEmployeesHeader}"
+                            subheader="{i18n>tileEmployeesSub}"
                             class="dashboardTile dashCard sapUiSmallMarginEnd sapUiSmallMarginBottom"
                             press="onNavToEmployeeList">
 
@@ -64,8 +64,8 @@
 
                         <GenericTile
                             id="deptTileNav"
-                            header="Total Departments"
-                            subheader="Active departments"
+                             header="{i18n>tileDeptHeader}"
+                            subheader="{i18n>tileDeptSub}"
                             class="dashboardTile dashCard sapUiSmallMarginEnd sapUiSmallMarginBottom"
                             press="onNavToDepartmentList">
 
@@ -85,8 +85,8 @@
 
                         <GenericTile
                             id="attendanceTile"
-                            header="Mark Attendance"
-                            subheader="Daily attendance"
+                            header="{i18n>tileAttendanceHeader}"
+                            subheader="{i18n>tileAttendanceSub}"
                             class="dashboardTile dashCard sapUiSmallMarginEnd sapUiSmallMarginBottom"
                             press="onNavToAttendance">
 
@@ -105,8 +105,8 @@
                         
                         <GenericTile
                             id="TimeTable"
-                            header="Genrenic Time Sheet"
-                            subheader="TimeTableAllotment"
+                            header="{i18n>tileTimeSheetHeader}"
+                            subheader="{i18n>tileTimeSheetSub}"
                             class="dashboardTile dashCard sapUiSmallMarginEnd sapUiSmallMarginBottom"
                             press="onNavToTimeSheet">
 
